@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="ErrorValidations">
+        <groups>
+            <run>
+                <include name="SanityCheck"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="org.Tests.ErrorMsgValidation"/>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="BulkAction">
+        <groups>
+            <run>
+                <include name="SanityCheck"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="org.Tests.BulkActionTests"/>
+        </classes>
+    </test>
+    <test name="sanityCases">
+        <groups>
+            <run>
+                <include name="SanityCheck"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="org.Tests.StudentListTest">
+            </class>
+        </classes>
+    </test>
+</suite>
