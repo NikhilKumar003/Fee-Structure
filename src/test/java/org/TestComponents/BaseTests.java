@@ -1,16 +1,15 @@
 package org.TestComponents;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.PageObjects.CoinRequestPage;
+import org.PageObjects.Dashboard;
 import org.PageObjects.LoginPage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,15 +22,22 @@ public class BaseTests {
     WebDriver driver;
     public LoginPage loginPage ;
 
+    public Dashboard DP;
+    public CoinRequestPage Coin;
 
-    public WebDriver InitializeDriver() throws IOException {
-        Properties prop = new Properties();
+    public Properties prop;
+
+    public BaseTests() throws IOException {
+//        Properties prop = new Properties();
+        prop = new Properties();
         String userDir = System.getProperty("user.dir");
         String filePath = userDir + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "org" + File.separator + "Resourses" + File.separator + "GlobalProperties.properties";
         FileInputStream fis = new FileInputStream(filePath);
         prop.load(fis);
-//        used ternary operator to execute directly from maven commands
-        String BrowserName = System.getProperty("browser")!=null ? System.getProperty("browser"): prop.getProperty("browser");
+    }
+
+    public WebDriver InitializeDriver() throws IOException {
+   String BrowserName = System.getProperty("browser")!=null ? System.getProperty("browser"): prop.getProperty("browser");
 //        String BrowserName = prop.getProperty("browser");
         if (BrowserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
@@ -54,18 +60,24 @@ public class BaseTests {
         return driver;
     }
 
-    @BeforeSuite(alwaysRun = true)
-    public LoginPage launchApplication() throws IOException{
-
+    @BeforeClass(alwaysRun = true)
+    public void launchApplication() throws IOException, InterruptedException {
         driver = InitializeDriver();
          loginPage = new LoginPage(driver);
-        loginPage.goTo();
-        return loginPage;
+        String Url = prop.getProperty("dashboardUrl");
+        driver.get(Url);
+        String username = prop.getProperty("username");
+        String password = prop.getProperty("password");
+        DP = loginPage.setLoginBtn(username, password);
+
 
     }
+
     @AfterSuite(alwaysRun = true)
     public void tearDown(){
 
 //        driver.close();
     }
+
+
 }

@@ -1,9 +1,6 @@
 package org.AbstractComponents;
 
-import org.PageObjects.AddStudentPage;
-import org.PageObjects.CoinRequestPage;
-import org.PageObjects.StudentListPage;
-import org.PageObjects.bulkActionPage;
+import org.PageObjects.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -49,26 +46,31 @@ public class AbstractComponents {
     WebElement ResetStudentPasswordBtn;
     @FindBy(xpath = "//a[.='Change Registered Ph.']")
     WebElement ChangeRegisteredBtn;
-
-
-
+    @FindBy(xpath = "//p[@class='Profile_mainNotificationText__Z3BJy']")
+    WebElement AccountText;
+    @FindBy(xpath = "//div[text()='My Profile']")
+    WebElement MyProfileTextInAccountPage;
+    @FindBy(xpath = "//span[text()='Back to dashboard']")
+    WebElement BackToDashboardBtn;
+    @FindBy(xpath = "//div[text()=' Change Password']")
+    WebElement changePasswordText;
+    @FindBy(xpath = "//button[text()='Reset']")
+    WebElement ResetBtnInChangePassword;
 
     public void waitForElementToAppear(By findBy) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
     }
-
     public void waitForWEbElementToAppear(WebElement findBy) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(findBy));
     }
-
-
-    public void setFeeStructBtn() {
+    public FeeStructurePage setFeeStructBtn() {
         FeePaymentBtn.click();
         FeeStructBtn.click();
+        FeeStructurePage FS =new FeeStructurePage(driver);
+        return FS;
     }
-
     public bulkActionPage setBulkActions() {
         FeePaymentBtn.click();
         bulkActionsBtn.click();
@@ -83,7 +85,9 @@ public class AbstractComponents {
 
     }
     public CoinRequestPage setCoinsRequestBtn(){
+        waitForWEbElementToAppear(FeePaymentBtn);
         FeePaymentBtn.click();
+        waitForWEbElementToAppear(CoinsRequestBtn);
         CoinsRequestBtn.click();
         CoinRequestPage coinRequestPage = new CoinRequestPage(driver);
         return coinRequestPage;
@@ -94,32 +98,36 @@ public class AbstractComponents {
         AddStudentPage addStudentPage = new AddStudentPage(driver);
         return addStudentPage;
     }
-    public void setMyProfileBtn(){
+    public void setAccountBtn(){
         AccountBtn.click();
+        waitForWEbElementToAppear(AccountText);
+    }
+    public void setMyProfileBtn(){
         MyProfileBtn.click();
-
+        waitForWEbElementToAppear(MyProfileTextInAccountPage);
+        BackToDashboardBtn.click();
     }
     public void setSignOutBtn(){
-        AccountBtn.click();
+//        AccountBtn.click();
         SignOutBtn.click();
     }
     public void setChangePasswordBtn(){
-        AccountBtn.click();
         ChangePasswordBtn.click();
+        waitForWEbElementToAppear(changePasswordText);
+        ResetBtnInChangePassword.click();
     }
     public void setResetStudentPasswordBtn(){
-        AccountBtn.click();
+        waitForWEbElementToAppear(ResetStudentPasswordBtn);
         ResetStudentPasswordBtn.click();
     }
     public void setChangeRegisteredBtn(){
-        AccountBtn.click();
+        waitForWEbElementToAppear(ChangeRegisteredBtn);
         ChangeRegisteredBtn.click();
     }
-//Absolute path
-//    C:\Users\Thinkpad\FeeStructure
-
     public void moveToAction(){
         Actions actions =new Actions(driver);
-
+    }
+    public WebElement getElement(By locator){
+        return driver.findElement(locator);
     }
 }

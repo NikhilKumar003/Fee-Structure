@@ -54,8 +54,8 @@ public class AddStudentPage  extends AbstractComponents {
         Actions actions =new Actions(driver);
         actions.moveToElement(NextBtn).perform();
         studentName.sendKeys("Test Nikhil");
-        studentMobile.sendKeys("7842290549");
-        studentId.sendKeys("GT10389");
+        studentMobile.sendKeys("7841233549");
+        studentId.sendKeys("GT103Q79");
 
         selectCourseDropDwn.click();
         selectCourse.click();

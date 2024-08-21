@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+
+    <test thread-count="5" verbose="2" preserve-order="true"
+          name="Sanity Test">
+        <classes>
+            <class name="org.Tests.SignInTest"/>
+            <class name="org.Tests.AddStudentTest"/>
+            <class name="org.Tests.StudentDetailsTest"/>
+            <class name="org.Tests.StudentListTest"/>
+            <class name="org.Tests.FeeStructureTest"/>
+            <class name="org.Tests.CoinRequestTest"/>
+            <class name="org.Tests.BulkActionTests"/>
+
+
+
+        </classes>
+   </test>
+</suite>

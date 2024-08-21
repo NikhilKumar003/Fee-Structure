@@ -11,8 +11,11 @@ import java.io.IOException;
 
 public class ErrorMsgValidation extends BaseTests {
 
+    public ErrorMsgValidation() throws IOException {
+    }
+
     @Test
-    public void checkErrorMsg() throws IOException {
+    public void checkErrorMsg() throws IOException, InterruptedException {
 
 
          loginPage.setLoginBtn("nikhil.kumvar@leo1.in", "School@1234");

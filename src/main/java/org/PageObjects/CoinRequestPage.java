@@ -34,9 +34,12 @@ public class CoinRequestPage extends AbstractComponents {
     WebElement errorMsgInBulkCaptureFile;
     @FindBy(css="img[alt='close']")
     WebElement CloseBtn;
+    @FindBy(xpath = "//h1[text()='Upload ERP Fee Data']")
+    WebElement UploadLinkText;
 
 
     public void setDownloadTemplate() {
+    waitForWEbElementToAppear(UploadLinkText);
         DownloadTemplate.click();
     }
 

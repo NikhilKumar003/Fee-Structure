@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="Add Student Test">
+        <classes>
+            <class name="org.Tests.AddStudentTest">
+                <methods>
+                    <include name="setAddStudent"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="Bulk Action Test">
+        <classes>
+            <class name="org.Tests.BulkActionTests">
+                <methods>
+                    <include name="BulkCapturePayment"/>
+                    <include name="BulkBulkFee"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="Coin Request Test">
+        <classes>
+            <class name="org.Tests.CoinRequestTest">
+                <methods>
+                    <include name="sampleTemplateDownload"/>
+                    <include name="sampleBulkTransactionUpload"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="Student Details Test">
+        <classes>
+            <class name="org.Tests.StudentDetailsTest">
+                <methods>
+                    <include name="setFeeDetails"/>
+                    <include name="setTransactionDetails"/>
+                    <include name="setCapturePayment"/>
+                    <include name="setRefundDetails"/>
+                    <include name="setWavierDetails"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="Student List Test">
+        <classes>
+            <class name="org.Tests.StudentListTest">
+                <methods>
+                    <include name="SendRemainderToStudent"/>
+                    <include name="searchStudentListWithCapture"/>
+                    <include name="DownloadStudentList"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

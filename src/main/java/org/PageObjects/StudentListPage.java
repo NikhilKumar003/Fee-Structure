@@ -33,6 +33,8 @@ public class StudentListPage extends AbstractComponents {
     WebElement viewFeeDetails;
     @FindBy(xpath = "//div[text()='Student ID']")
     WebElement StudentIdText;
+    @FindBy(xpath = "//img[@alt='close']")
+    WebElement CloseBtn;
 
 
     public void SearchStudentDetails(String Detail) throws InterruptedException  {
@@ -48,6 +50,7 @@ public class StudentListPage extends AbstractComponents {
         viewFeeDetails.click();
         return new StudentDetailsPage(driver);
     }
+
     public void SendRemainderKaro(){
         SendRemainderBtn.click();
         waitForWEbElementToAppear(CancelBtn);
@@ -55,6 +58,8 @@ public class StudentListPage extends AbstractComponents {
     }
     public void CapturePaymentKaro(){
         CapturePayBtn.click();
+        CloseBtn.click();
+
     }
     public void SetDownloadStudentList() throws InterruptedException {
         waitForWEbElementToAppear(DownloadAlBtn);

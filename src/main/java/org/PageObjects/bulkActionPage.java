@@ -37,27 +37,16 @@ public class bulkActionPage extends AbstractComponents {
     WebElement BulkCaptureTemplate;
     @FindBy(xpath = "//button[text()='Upload File']")
     WebElement CaptureUploadFile;
-
-
-    public void setSampleTemplate() {
-        sampleTemplate.click();
-        waitForWEbElementToAppear(sampleTemplate);
-    }
-
-    public void setUploadStudentsInBulk() {
-        uploadStudentsInBulk.click();
-        waitForWEbElementToAppear(studentBulkText);
-        uploadFile.click();
-        waitForWEbElementToAppear(errorMsgInBulkStudentFile);
-
-    }
-
+    @FindBy(xpath = "//img[@alt='close']")
+    WebElement CloseBtn;
     public void setCapturePayment() {
         capturePayment.click();
         waitForWEbElementToAppear(BulkCaptureTemplate);
         BulkCaptureTemplate.click();
         waitForWEbElementToAppear(CaptureUploadFile);
         CaptureUploadFile.click();
+        CloseBtn.click();
+
     }
 
     public void setBulkFee() {
@@ -66,6 +55,7 @@ public class bulkActionPage extends AbstractComponents {
         BulkCaptureTemplate.click();
         waitForWEbElementToAppear(CaptureUploadFile);
         CaptureUploadFile.click();
+        CloseBtn.click();
     }
 
     public String CheckErrorMsg() {

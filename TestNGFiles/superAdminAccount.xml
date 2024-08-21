@@ -8,7 +8,7 @@
             </run>
         </groups>
         <classes>
-            <class name="org.Tests.SignIn"/>
+            <class name="org.Tests.SignInTest"/>
         </classes>
     </test>
 
