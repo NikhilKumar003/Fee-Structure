@@ -19,6 +19,14 @@ public class Dashboard extends AbstractComponents {
 
     @FindBy(css = "div.text-center.text-danger.mb-2")
     WebElement ErrorMsg;
+    @FindBy(xpath = "//span[text()='Create application']")
+    WebElement createApplicationBtn;
+    @FindBy(css = "input#formEmail.form-control.form-control-md")
+    WebElement enterMobileNumber;
+    @FindBy(css = "label.mb-3.form-label")
+    WebElement popupText;
+    @FindBy(css = "button.btn.btn-primary")
+    WebElement submitBtn;
 
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
@@ -27,6 +35,13 @@ public class Dashboard extends AbstractComponents {
         String ErrMsg= ErrorMsg.getText();
         return ErrMsg;
     }
+    public void ApplicationCreation(){
+    createApplicationBtn.click();
+    waitForWEbElementToAppear(popupText);
+    enterMobileNumber.sendKeys("7842290549");
+    submitBtn.click();
 
+
+    }
 
 }

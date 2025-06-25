@@ -23,6 +23,7 @@ public class AddStudentTest extends BaseTests {
 //        String password = prop.getProperty("password");
 //        DP = loginPage.setLoginBtn(username, password);
         AddStudent = loginPage.setAddStudentBtn();
+//
     }
 
 //    @BeforeMethod
@@ -32,8 +33,10 @@ public class AddStudentTest extends BaseTests {
 
 
     @Test
-    public void setAddStudent() {
+    public void setAddStudent() throws IOException {
+        String courseNames = prop.getProperty("selectCourse");
         AddStudent.setAddStudentDetails();
+
     }
 
 //    @Test

@@ -32,6 +32,8 @@ public class AbstractComponents {
     WebElement bulkActionsBtn;
     @FindBy(xpath = "//span[contains(text(),'Student List')]")
     WebElement StudentListBtn;
+    @FindBy(xpath = "(//span[text()='Student List'])[2]")
+    WebElement StudentListBtnInNach;
     @FindBy(xpath = "//span[contains(text(),'Coins Request')]")
     WebElement CoinsRequestBtn;
     @FindBy(css="img[alt='avatar']")
@@ -56,6 +58,11 @@ public class AbstractComponents {
     WebElement changePasswordText;
     @FindBy(xpath = "//button[text()='Reset']")
     WebElement ResetBtnInChangePassword;
+    @FindBy(xpath = "//img[@alt='logo-light']")
+    WebElement Leo1Logo;
+    @FindBy(xpath = "//span[text()='Fee Reimbursement']")
+    WebElement FeeReiumbrseBtn;
+
 
     public void waitForElementToAppear(By findBy) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -70,6 +77,15 @@ public class AbstractComponents {
         FeeStructBtn.click();
         FeeStructurePage FS =new FeeStructurePage(driver);
         return FS;
+    }
+    public NachPlacementPage setNachPlacement(){
+        Actions actions =new Actions(driver);
+        FeeReiumbrseBtn.click();
+        waitForWEbElementToAppear(StudentListBtnInNach);
+       actions.click(StudentListBtnInNach).perform();
+//        StudentListBtn.click();
+        NachPlacementPage nach =new NachPlacementPage(driver);
+        return nach;
     }
     public bulkActionPage setBulkActions() {
         FeePaymentBtn.click();
@@ -124,10 +140,16 @@ public class AbstractComponents {
         waitForWEbElementToAppear(ChangeRegisteredBtn);
         ChangeRegisteredBtn.click();
     }
+    public Dashboard checkLogo(){
+        Leo1Logo.isEnabled();
+        return null;
+    }
     public void moveToAction(){
         Actions actions =new Actions(driver);
     }
     public WebElement getElement(By locator){
         return driver.findElement(locator);
     }
+
+
 }

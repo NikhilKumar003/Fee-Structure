@@ -48,7 +48,17 @@ public class StudentListTest extends BaseTests {
     public void DownloadStudentList() throws InterruptedException {
         studentListPage.SetDownloadStudentList();
     }
-
+    @Test
+    public void searchInstituteBranchWithResetBtn(){
+        studentListPage.selectInstituteBranchReset();
+    }
+    @Test
+    public void searchInstituteBranchWithApplyBtn(){
+        studentListPage.selectInstituteBranchApply();
+    }
+    @Test
+    public void FeeReiumbrsementSection(){
+    }
 }
 
 

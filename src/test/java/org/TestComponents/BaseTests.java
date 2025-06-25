@@ -73,11 +73,11 @@ public class BaseTests {
 
     }
 
-    @AfterSuite(alwaysRun = true)
+
+    @AfterClass(alwaysRun = true)
     public void tearDown(){
 
 //        driver.close();
     }
-
 
 }

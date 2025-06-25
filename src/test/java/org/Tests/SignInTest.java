@@ -16,10 +16,10 @@ public class SignInTest extends BaseTests {
     public SignInTest() throws IOException {
     }
 
-    @Test
+    @Test(priority = 0)
     public void SignInPage() throws IOException, InterruptedException {
 //    LoginPage loginPage= launchApplication();
-//        Dashboard DP = loginPage.setLoginBtn(email,password);
+//      DP = loginPage.setLoginBtn(email,password);
         String currentUrl = loginPage.getCurrentUrl();
         String expectedUrl = prop.getProperty("DashboardUrl"); // replace with the actual expected URL
         Assert.assertEquals(currentUrl, expectedUrl, "Dashboard URL does not match the expected URL.");
@@ -29,6 +29,7 @@ public class SignInTest extends BaseTests {
 
         return new Object[][] {{"singh.ajay@financepeer.co","School@1234"}};
     }
+
 }
 
 

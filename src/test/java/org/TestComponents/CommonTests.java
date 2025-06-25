@@ -42,10 +42,13 @@ public class CommonTests extends BaseTests {
         loginPage.setResetStudentPasswordBtn();
 
     }
-
     @Test(priority = 3)
     public void ChangeRegisterNumber() {
         loginPage.setChangeRegisteredBtn();
 
     }
+//    @Test
+//    public void CheckLogoInstitute(){
+//
+//    }
 }

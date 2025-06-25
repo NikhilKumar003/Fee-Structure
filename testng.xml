@@ -6,6 +6,7 @@
           name="Sanity Test">
         <classes>
             <class name="org.Tests.SignInTest"/>
+            <class name="org.TestComponents.CommonTests"/>
             <class name="org.Tests.AddStudentTest"/>
             <class name="org.Tests.StudentDetailsTest"/>
             <class name="org.Tests.StudentListTest"/>
